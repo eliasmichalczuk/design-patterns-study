@@ -1,0 +1,38 @@
+<div *ngIf="(userStateManager | async) as manager">
+  <span>Search here...</span>
+  <div>
+    <input type="text" value="Elias Michalczuk" [formControl]="searchValueControl">
+  </div>
+  <div>
+    <span>Page size options:</span>
+    <button
+      (click)="userFacade.updatePagination(pageSize)"
+      *ngFor="let pageSize of manager.pagination.pageSizes"
+      style="font-size: 14px; background-color: coral;">
+      {{pageSize}}
+    </button>
+  </div>
+  <div>
+    <span>Select different page:</span>
+    <button
+      (click)="userFacade.updateCurrentPage(page)"
+      *ngFor="let page of manager.pagination.pageNumbers"
+      style="font-size: 14px; background-color: lightblue;">
+      {{page}}
+    </button>
+  </div>
+  <table>
+    <tr>
+      <th>first name</th>
+      <th>last name</th>
+      <th>email</th>
+      <th>phone</th>
+    </tr>
+    <tr *ngFor="let user of manager.users">
+      <td>{{user.name.first}}</td>
+      <td>{{user.name.last}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone}}</td>
+    </tr>
+  </table>
+</div>
