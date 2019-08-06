@@ -24,7 +24,7 @@ export class CustomOperatorsComponent implements OnInit {
         pow(2),
         logArr2(),
       ).subscribe(arr => {
-        this.numbersOperated = arr;
+        this.numbersOperated = arr as any;
       });
   }
 }
